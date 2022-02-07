@@ -60,6 +60,13 @@ public class UserServiceValidator {
 				throw new InvalidArgumentException(ErrorCodes.INVALID_REQUEST, "User name already exist", "User name already exist");
 			}
 		}
+		
+		if(StringUtils.isNotEmpty(request.getPhone())) {
+			User userByPhone = userRepository.findByPhone(request.getPhone());
+			if(userByPhone != null) {
+				throw new InvalidArgumentException(ErrorCodes.INVALID_REQUEST, "Phone Number already exist", "Phone Number already exist");
+			}
+		}
 
 		if (request.getUserType().equals(UserType.WRITER.name())) {
 			if (StringUtils.isEmpty(request.getPhone())) {
