@@ -31,4 +31,9 @@ public class UserController {
 			throws InvalidArgumentException, JsonMappingException, JsonProcessingException {
 		return userService.signup(request, profileImageFile, qualificationCertificateFiles, nationalIdFiles, portfolioFiles);
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test() {
+		return "success";
+	}
 }
